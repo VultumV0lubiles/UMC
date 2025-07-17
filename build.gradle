@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 plugins {
     // id 'java'
     id 'org.springframework.boot' version "${springBootVersion}" apply false
@@ -19,6 +21,10 @@ subprojects {
     java {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    repositories {
+        mavenCentral()
     }
 
     dependencyManagement {

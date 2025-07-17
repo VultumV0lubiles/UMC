@@ -3,6 +3,12 @@ package ru.mts.media.platform.umc.dao.postgres.venue;
 import jakarta.persistence.*;
 import lombok.Data;
 import ru.mts.media.platform.umc.dao.postgres.common.FullExternalIdPk;
+import ru.mts.media.platform.umc.dao.postgres.event.EventPgEntity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Data
@@ -26,4 +32,8 @@ public class VenuePgEntity {
     private String referenceId;
 
     private String name;
+
+    @ManyToMany(fetch = LAZY)
+    @JoinTable(name = "event_venue")
+    private Set<EventPgEntity> events = new HashSet<>();
 }
